@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ATFoundation_Example' do
+  pod 'ATFoundation', :path => '../'
+
+  target 'ATFoundation_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

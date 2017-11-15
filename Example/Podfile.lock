@@ -1,0 +1,16 @@
+PODS:
+  - ATFoundation (0.1.0)
+
+DEPENDENCIES:
+  - ATFoundation (from `../`)
+
+EXTERNAL SOURCES:
+  ATFoundation:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ATFoundation: 91846f32b341c23933478dbe2b099600526b2260
+
+PODFILE CHECKSUM: d4fb6e351b5e58bd08f78e789f1c8565a6c197f5
+
+COCOAPODS: 1.4.0.beta.2

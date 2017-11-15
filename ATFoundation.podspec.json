@@ -1,0 +1,23 @@
+{
+  "name": "ATFoundation",
+  "version": "0.1.0",
+  "summary": "A short description of ATFoundation.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/agile-swift/ATFoundation",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "TimeToThink": "wangyq@hui10.com",
+    "Kevin": "kevinchiyu@163.com"
+  },
+  "source": {
+    "git": "https://github.com/agile-swift/ATFoundation.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "ATFoundation/Classes/**/*"
+}
