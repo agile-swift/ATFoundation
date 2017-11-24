@@ -23,6 +23,7 @@ extension String
         }
         return self.components(separatedBy: str)
     }
+    
     //颠倒字符串
     public func reverse() -> String
     {
@@ -34,6 +35,7 @@ extension String
         }
         return newStr
     }
+    
     //统计字符串个数
     public func howMany(str: String) -> Int
     {
@@ -57,6 +59,7 @@ extension String
         }
         return times
     }
+    
     /**
      格式化字符串
      e.g. input   12345002
@@ -82,19 +85,22 @@ extension String
         }
         return moneyStr
     }
+    
     /**
      去掉左右的空格和换行符
      */
     public func trim() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
+    
     /**
      如果swift再次升级改变函数,这样修改起来方便
      */
-    public func has(other:String)->Bool
+    public func has(other:String) -> Bool
     {
         return self.contains(other)
     }
+    
     /**
      这个太经典了,获取指定位置和大小的字符串(这里仿OC中NSString的语法)
      - parameter start  : 起始位置
@@ -113,6 +119,7 @@ extension String
         let range = st ..< en
         return String(self[range])
     }
+    
     /**
      替换字符串
      */
@@ -120,6 +127,7 @@ extension String
     {
         return self.replacingOccurrences(of: of, with: with)
     }
+    
     /**
      单行字符串的size
      */
@@ -129,6 +137,7 @@ extension String
         let string:NSString = self as NSString
         return string.size(withAttributes: strs)
     }
+    
     /**
      获取文字的宽高
      */
@@ -140,6 +149,7 @@ extension String
         let rect:CGRect = text.boundingRect(with: size, options: option, attributes: attributes, context: nil)
         return rect.size
     }
+    
     /**
      将16进制字符串转为Int
      */
@@ -147,6 +157,7 @@ extension String
     {
         return Int(self,radix:16) ?? 0
     }
+    
     /**
      获取字符串长度
      */
@@ -159,12 +170,14 @@ extension String
 final class numberFormat: NumberFormatter
 {
     static let shared = numberFormat()
+    
     private override init()
     {
         super.init()
         self.numberStyle = .decimal
         self.currencyCode = ""
     }
+    
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")

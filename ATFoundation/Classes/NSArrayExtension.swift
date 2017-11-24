@@ -10,68 +10,38 @@ import Foundation
 
 extension NSArray
 {
-    public func objectAtIndex(Index index:Int)->Any?{
+    public func objectAtIndex(_ index:Int?) -> Any? {
         
-        if index>=0 && self.count<index
+        if index != nil && index! >= 0 && index! < self.count
         {
-            return self.object(at: index)
+            return self.object(at: index!)
         }
         return nil
     }
     
-    public func isEmpty()->Bool{
-        return self.count==0
+    public var isEmpty : Bool {
+        return self.count == 0
     }
 }
-extension NSMutableArray
-{
-    public func addObject(Object object:Any?){
-        
-        if object != nil
-        {
+
+extension NSMutableArray {
+    public func addObject(_ object:Any?) {
+        if object != nil {
             self.add(object!)
         }
     }
     
-    public func insertObject(Object object:Any?,Index index:Int) {
-        
-        if object != nil && index>=0 && index<self.count
-        {
-            self.insert(object!, at: index)
+    public func insertObject(_ object:Any?,at index:Int?) {
+        if object != nil && index != nil && index! >= 0 && index! < self.count {
+            self.insert(object!, at: index!)
         }
         
     }
     
-    public func addObjectsFromArray(array:NSArray){
+    public func addObjectsFromArray(array:NSArray?){
         
-        if !array.isEmpty()
-        {
-            self.addObjects(from: array as! [Any])
-        }
+        if array == nil || array!.isEmpty { return }
+        self.addObjects(from: array as! [Any])
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

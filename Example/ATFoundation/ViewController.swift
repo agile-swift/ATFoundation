@@ -12,25 +12,25 @@ import ATFoundation
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate
 {
     let clickBlock:(_ a:Int)->() = {(_ a) in
-        print("执行了 Block   "+a.description)
+        logN("执行了 Block   "+a.description)
     }
-    lazy var modelArray:NSMutableArray = {
+    lazy var modelArray:[Model] = {
         
-        let models = NSMutableArray()
+        var models : [Model] = []
         for i in 0..<20
         {
-            let model = Model()
+            var model = Model()
             model.name = "吾乃天帝 "
             model.age = 20 + i
             model.gender = " 男"
-            models.addObject(Object: model)
+            models.append(model)
         }
         return models
     }()
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        initTableView()
+        initTableView()
     }
     func initTableView(){
         
@@ -51,49 +51,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let identifier = "identifier"
         let cell:DemoCell? = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? DemoCell
-        cell?.model = self.modelArray.objectAtIndex(Index: indexPath.row) as! Model!
+        cell?.model = self.modelArray[indexPath.row]
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        clickBlock(100)
-        var number = 10
-        test(&number) { (_ a) in
-            print("打印 函数 block " + "\(a)")
-            return a
-        }
+        clickBlock(indexPath.row)
+        logN("my kkk is kkkkk".howMany(str: ""))
     }
-    
-    func test(_ a:inout Int,block:(_ num:Int)->(Int)){
-        a += block(a)
-        print("result is " + "\(a)")
-    }
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

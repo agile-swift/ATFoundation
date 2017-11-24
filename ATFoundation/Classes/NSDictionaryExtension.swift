@@ -10,24 +10,19 @@ import Foundation
 
 extension NSDictionary
 {
-    public func objectForSafeKey(_ key:Any) -> Any?
+    public func objectForSafeKey(_ key:Any?) -> Any?
     {
-        if key != nil
-        {
-            return self .object(forKey: key)
-        }
-        return nil
+        guard let k = key else { return nil }
+        return self.object(forKey: k)
     }
 }
 
 extension NSMutableDictionary
 {
-    public func setObjecForSafeKey(Object object:Any,_ key:Any)
+    public func setObjecForSafeKey(Object object:Any?,_ key:Any?)
     {
-        if object != nil && key != nil
-        {
-            self .setObject(object, forKey: key as! NSCopying)
-        }
+        guard let k = key,let v = object,let _k = k as? NSCopying else { return }
+        self.setObject(v,forKey: _k)
     }
 }
 

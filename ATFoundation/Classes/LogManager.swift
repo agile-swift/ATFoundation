@@ -11,54 +11,93 @@
 import Foundation
 
 
+public enum LogLevel : String{
+    case normal = "💚"
+    case warning = "💛 "
+    case error = "💔"
+}
+
 final class LogManager {
     
-    var logEnable:Bool = true
-
-    static let manager = LogManager()
-    private init(){}
+    static private var _logEnable:Bool = { ()->Bool in
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }()
     
-    func enbaleLog(){
-        self.logEnable = true
+    static public var logEnable : Bool {
+        get { return _logEnable }
     }
-    func disableLog(){
-        self.logEnable = false
+    
+    static public func enbaleLog(){
+        _logEnable = true
+    }
+    static public func disableLog(){
+        _logEnable = false
+    }
+}
+
+public func logger(key:String = "",
+                 level:LogLevel = .normal,
+                 function : String = #function ,
+                 file : String = #file,
+                 line : Int = #line,
+                 _ message: Any...){
+    if LogManager.logEnable {
+        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
+        let str = convert(items: message)
+        let keyStr = key.count != 0 ? "\(key)" : ""
+        print(level.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
+    }
+}
+
+public func logN(key:String = "",
+                   function : String = #function ,
+                   file : String = #file,
+                   line : Int = #line,
+                   _ message: Any...){
+    if LogManager.logEnable {
+        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
+        let str = convert(items: message)
+        let keyStr = key.count != 0 ? "\(key)" : ""
+        print(LogLevel.normal.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
+    }
+}
+
+public func logW(key:String = "",
+               function : String = #function ,
+               file : String = #file,
+               line : Int = #line,
+               _ message: Any...){
+    if LogManager.logEnable {
+        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
+        let str = convert(items: message)
+        let keyStr = key.count != 0 ? "\(key)" : ""
+        print(LogLevel.warning.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
+    }
+}
+
+public func logE(key:String = "",
+               function : String = #function ,
+               file : String = #file,
+               line : Int = #line,
+               _ message: Any...){
+    if LogManager.logEnable {
+        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
+        let str = convert(items: message)
+        let keyStr = key.count != 0 ? "\(key)" : ""
+        print(LogLevel.error.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
     }
 }
 
 
-public func printmm(_ items:Any...) {
-    #if DEBUG
-//    print(items)
-//        print(items)
-        
-        var string = ""
-        
-        for str in items {
-            
-            if str is String {
-                string += str as! String
-            } else {
-                string += "\(str)"
-            }
-            
-        }
-        print(string)
-    #endif
-
+private func convert(items : [Any]?) -> String {
+    let strings = (items ?? []).map { (item) -> String in
+        return "\(item)"
+    }
+    let string = strings.joined(separator: " ")
+    return string
 }
-
-//public func printmm(message: Any...){
-//    #if DEBUG
-//        let file = #file
-//        let method = #function
-//        let line = #line
-//        let fileString = (NSString.init(utf8String: file)!.lastPathComponent as NSString).utf8String
-//        let str = (String.init(describing: message) as NSString).utf8String
-//        print("\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
-//        fprintf(stderr,"===========\nFILE > %s:%d\nFUNC > %s\nTEXT > %s\n===========\n",fileString, #line,#function,str)
-//    #else
-//    
-//    #endif
-//}
 

@@ -14,7 +14,7 @@ class DemoCell: UITableViewCell {
     internal var model:Model = Model(){
         didSet {
             self.label.text = self.model.name + model.age.description + model.gender
-            print(self.label.text ?? "默认")
+//            print(self.label.text ?? "默认")
         }
     }
 

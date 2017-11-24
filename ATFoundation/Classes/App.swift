@@ -18,12 +18,12 @@ final public class App : NSObject
     }
     public class var appVersion:String
     {
-        var name = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         return name
     }
     public class var appDetailVersion:String
     {
-        var name = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         return name
     }
     public class var betteryLevel:Float
@@ -42,9 +42,9 @@ final public class App : NSObject
     {
         return UIDevice.current.systemName
     }
-    public class var uuid:String?
+    public class var uuid:String
     {
-        return UIDevice.current.identifierForVendor?.uuidString
+        return UUID.init().uuidString
     }
     public class var deviceName:String
     {
@@ -69,18 +69,41 @@ final public class App : NSObject
         case "iPhone7,1":                               return "iPhone 6 Plus"
         case "iPhone8,1":                               return "iPhone 6s"
         case "iPhone8,2":                               return "iPhone 6s Plus"
-        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
-        case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
-        case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
-        case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
-        case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
-        case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
-        case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
-        case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
-        case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
-        case "iPad6,7", "iPad6,8":                      return "iPad Pro"
-        case "AppleTV5,3":                              return "Apple TV"
-        case "i386", "x86_64":                          return "Simulator"
+        case "iPhone8,4":                               return "iPhone SE"
+        case "iPhone9,1","iPhone9,3":                   return "iPhone 7"
+        case "iPhone9,2","iPhone9,4":                   return "iPhone 7 Plus"
+        case "iPhone10,1","iPhone10,4":                 return "iPhone 8"
+        case "iPhone10,2","iPhone10,5":                 return "iPhone 8 Plus"
+        case "iPhone10,3","iPhone10,6":                 return "iPhone X"
+            
+            
+        case "iPad1,1":                                 return "iPad"
+        case "iPad1,2":                                 return "iPad 3G"
+        case "iPad2,1":                                 return "iPad 2 (WiFi)"
+        case "iPad2,2","iPad2,4":                       return "iPad 2"
+        case "iPad2,3":                                 return "iPad 2 (CDMA)"
+        case "iPad2,5":                                 return "iPad Mini (WiFi)"
+        case "iPad2,6":                                 return "iPad Mini"
+        case "iPad2,7":                                 return "iPad Mini (GSM+CDMA)"
+        case "iPad3,1":                                 return "iPad 3 (WiFi)"
+        case "iPad3,2":                                 return "iPad 3 (GSM+CDMA)"
+        case "iPad3,3":                                 return "iPad 3"
+        case "iPad3,4":                                 return "iPad 4 (WiFi)"
+        case "iPad3,5":                                 return "iPad 4"
+        case "iPad3,6":                                 return "iPad 4 (GSM+CDMA)"
+        case "iPad4,1":                                 return "iPad Air (WiFi)"
+        case "iPad4,2":                                 return "iPad Air (Cellular)"
+        case "iPad4,4":                                 return "iPad Mini 2 (WiFi)"
+        case "iPad4,5":                                 return "iPad Mini 2 (Cellular)"
+        case "iPad4,6":                                 return "iPad Mini 2"
+        case "iPad4,7","iPad4,8","iPad4,9":             return "iPad Mini 3"
+        case "iPad5,1":                                 return "iPad Mini 4 (WiFi)"
+        case "iPad5,2":                                 return "iPad Mini 4 (LTE)"
+        case "iPad5,3","iPad5,4":                       return "iPad Air 2"
+        case "iPad6,3","iPad6,4":                       return "iPad Pro 9.7"
+        case "iPad6,7","iPad6,8":                       return "iPad Pro 12.9"
+        
+        case "i386","x86_64":                           return "Simulator"
         default:                                        return identifier
         }
     }
