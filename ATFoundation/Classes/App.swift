@@ -12,49 +12,62 @@ import Foundation
 
 final public class App : NSObject
 {
-    public class var iPhoneName:String
+    public class var iPhoneName : String
     {
         return UIDevice.current.name
     }
-    public class var appVersion:String
-    {
-        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        return name
+    
+    public class var appName : String {
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        return name ?? "None"
     }
-    public class var appDetailVersion:String
+    
+    public class var appVersion : String
     {
-        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        return name
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return version
     }
-    public class var betteryLevel:Float
+    
+    public class var appDetailVersion : String
+    {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        return version
+    }
+    
+    public class var betteryLevel : Float
     {
         return UIDevice.current.batteryLevel
     }
-    public class var localizedMode:String
+    
+    public class var localizedMode : String
     {
         return UIDevice.current.localizedModel
     }
-    public class var systemVersion:String
+    
+    public class var systemVersion : String
     {
         return UIDevice.current.systemVersion
     }
-    public class var systemName:String
+    
+    public class var systemName : String
     {
         return UIDevice.current.systemName
     }
-    public class var uuid:String
+    
+    public class var uuid : String
     {
         return UUID.init().uuidString
     }
-    public class var deviceName:String
+    
+    public class var deviceName : String
     {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children.reduce("") { identifier, element in guard let value = element.value as? Int8, value != 0 else {
-                return identifier
-            }
-            return identifier
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8,
+            value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
         switch identifier {

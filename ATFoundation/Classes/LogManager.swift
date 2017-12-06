@@ -15,26 +15,37 @@ public enum LogLevel : String{
     case normal = "💚"
     case warning = "💛 "
     case error = "💔"
+    case none = ""
 }
 
-final class LogManager {
+public protocol LogManagerDelegate : class {
+    func logManager(_ logManager : LogManager, didReceiveLog log : String)
+}
+
+final public class LogManager {
     
-    static private var _logEnable:Bool = { ()->Bool in
+    private init() { }
+    
+    public static let shared = LogManager()
+    
+    private var _logEnable:Bool = { ()->Bool in
         #if DEBUG
             return true
         #else
             return false
         #endif
     }()
+
+    weak public var delegate : LogManagerDelegate?
     
-    static public var logEnable : Bool {
+    public var logEnable : Bool {
         get { return _logEnable }
     }
     
-    static public func enbaleLog(){
+    public func enbaleLog(){
         _logEnable = true
     }
-    static public func disableLog(){
+    public func disableLog(){
         _logEnable = false
     }
 }
@@ -45,11 +56,12 @@ public func logger(key:String = "",
                  file : String = #file,
                  line : Int = #line,
                  _ message: Any...){
-    if LogManager.logEnable {
+    if LogManager.shared.logEnable {
         let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
         let str = convert(items: message)
         let keyStr = key.count != 0 ? "\(key)" : ""
-        print(level.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
+        LogManager.shared.delegate?.logManager(LogManager.shared, didReceiveLog: str)
+        print(level.rawValue + keyStr + "\t\(fileStr).\(line)\t\(function)\t\(str)\n")
     }
 }
 
@@ -58,12 +70,7 @@ public func logN(key:String = "",
                    file : String = #file,
                    line : Int = #line,
                    _ message: Any...){
-    if LogManager.logEnable {
-        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
-        let str = convert(items: message)
-        let keyStr = key.count != 0 ? "\(key)" : ""
-        print(LogLevel.normal.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
-    }
+    logger(key: key, level: .normal, function: function, file: file, line: line, message)
 }
 
 public func logW(key:String = "",
@@ -71,12 +78,7 @@ public func logW(key:String = "",
                file : String = #file,
                line : Int = #line,
                _ message: Any...){
-    if LogManager.logEnable {
-        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
-        let str = convert(items: message)
-        let keyStr = key.count != 0 ? "\(key)" : ""
-        print(LogLevel.warning.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
-    }
+    logger(key: key, level: .warning, function: function, file: file, line: line, message)
 }
 
 public func logE(key:String = "",
@@ -84,12 +86,7 @@ public func logE(key:String = "",
                file : String = #file,
                line : Int = #line,
                _ message: Any...){
-    if LogManager.logEnable {
-        let fileStr = file.components(separatedBy: CharacterSet.init(charactersIn: "/")).last ?? ""
-        let str = convert(items: message)
-        let keyStr = key.count != 0 ? "\(key)" : ""
-        print(LogLevel.error.rawValue + keyStr + "\n\(fileStr).\(line)\n\(function)\n\(str)\n")
-    }
+    logger(key: key, level: .error, function: function, file: file, line: line, message)
 }
 
 
@@ -99,5 +96,11 @@ private func convert(items : [Any]?) -> String {
     }
     let string = strings.joined(separator: " ")
     return string
+}
+
+extension LogManagerDelegate {
+    func logManager(_ logManager : LogManager, didReceiveLog log : String) {
+        
+    }
 }
 
