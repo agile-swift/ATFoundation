@@ -66,7 +66,7 @@ extension NSDate{
     
     public func isEqualToDateIgnorTime(_ date:NSDate)->Bool
     {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         let component2:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:date as Date) as NSDateComponents
         return (component1.year == component2.year) && (component1.month == component2.month) && (component1.day == component2.day)
     }
@@ -88,7 +88,7 @@ extension NSDate{
     
     public func isSameWeekAsDate(_ date:NSDate)->Bool
     {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         let component2:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:date as Date) as NSDateComponents
         
         if component1.weekOfYear != component2.weekOfYear {
@@ -103,7 +103,7 @@ extension NSDate{
     }
     
     public func isSameYearAsDate(_ date:NSDate) -> Bool {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         let component2:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:date as Date) as NSDateComponents
         return component1.year == component2.year
     }
@@ -113,47 +113,47 @@ extension NSDate{
     }
     
     public func hour() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.hour
     }
     
     public func minute() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.minute
     }
     
     public func seconds() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.second
     }
     
     public func day() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.day
     }
     
     public func month() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.month
     }
     
     public func week() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.weekOfYear
     }
     
     public func weekDay() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.weekday
     }
     
     public func nthWeekday() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.weekdayOrdinal
     }
     
     public func year() -> Int {
-        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:NSDate.now as Date) as NSDateComponents
+        let component1:NSDateComponents = NSCalendar.current.dateComponents(unitSet, from:self as Date) as NSDateComponents
         return component1.year
     }
 }
