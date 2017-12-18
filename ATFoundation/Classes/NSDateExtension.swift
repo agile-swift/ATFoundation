@@ -28,6 +28,40 @@ public enum DateUnit: Int{
     case Week = 604800
 }
 
+public protocol DateType
+{
+    var date : Date { get }
+}
+extension Date : DateType
+{
+    public var date: Date
+    {
+        return self
+    }
+}
+extension NSDate : DateType
+{
+    public var date: Date
+    {
+        return self as Date
+    }
+}
+extension TimeInterval : DateType
+{
+    public var date : Date
+    {
+        return Date.init(timeIntervalSince1970: self)
+    }
+}
+
+private let formatter:DateFormatter = DateFormatter()
+public func string(by:String,date:DateType)->String
+{
+    if by != formatter.dateFormat {
+        formatter.dateFormat = by
+    }
+    return formatter.string(from: date.date)
+}
 extension NSDate{
     
     public class var now : NSDate {
