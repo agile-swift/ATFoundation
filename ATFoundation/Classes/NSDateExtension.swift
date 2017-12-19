@@ -55,10 +55,10 @@ extension TimeInterval : DateType
 }
 
 private let formatter:DateFormatter = DateFormatter()
-public func string(by:String,date:DateType)->String
+public func dateString(format:String,date:DateType)->String
 {
-    if by != formatter.dateFormat {
-        formatter.dateFormat = by
+    if format != formatter.dateFormat {
+        formatter.dateFormat = format
     }
     return formatter.string(from: date.date)
 }
