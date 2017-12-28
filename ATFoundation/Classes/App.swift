@@ -9,19 +9,22 @@
 import UIKit
 import Foundation
 
-
+/// message of app
 final public class App : NSObject
 {
+    /// device name
     public class var iPhoneName : String
     {
         return UIDevice.current.name
     }
     
+    /// app name
     public class var appName : String {
         let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
         return name ?? "None"
     }
     
+    /// app version
     public class var appVersion : String
     {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String

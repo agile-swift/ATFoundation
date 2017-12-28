@@ -10,7 +10,7 @@
 
 import Foundation
 
-
+/// log level of customer log
 public enum LogLevel : String{
     case normal = "💚"
     case warning = "💛 "
@@ -18,15 +18,31 @@ public enum LogLevel : String{
     case none = ""
 }
 
+/// obtain log message delegate, for class only
 public protocol LogManagerDelegate : class {
     func logManager(_ logManager : LogManager, didReceiveLog log : String)
 }
 
+/// the manager of log
 final public class LogManager {
     
     private init() { }
     
     public static let shared = LogManager()
+
+    weak public var delegate : LogManagerDelegate?
+    
+    public var logEnable : Bool {
+        get { return _logEnable }
+    }
+
+    /// enable log , default is true in DEBUG, otherwise false
+    public func enableLog(){
+        _logEnable = true
+    }
+    public func disableLog(){
+        _logEnable = false
+    }
     
     private var _logEnable:Bool = { ()->Bool in
         #if DEBUG
@@ -35,21 +51,19 @@ final public class LogManager {
             return false
         #endif
     }()
-
-    weak public var delegate : LogManagerDelegate?
-    
-    public var logEnable : Bool {
-        get { return _logEnable }
-    }
-    
-    public func enbaleLog(){
-        _logEnable = true
-    }
-    public func disableLog(){
-        _logEnable = false
-    }
 }
 
+/// log method instead of the system print, just like log in Android.
+/// i think you need to copy this method to your project, and blank in your own key
+/// output : 'kevin 💚    ViewController.swift.15    ViewController    ["call Block   1"]'
+///
+/// - Parameters:
+///   - key: keyword to filter
+///   - level: log level,filter too
+///   - function: call this methed in which function
+///   - file: log in file
+///   - line: log of line
+///   - message: log message
 public func logger(key:String = "",
                  level:LogLevel = .normal,
                  function : String = #function ,

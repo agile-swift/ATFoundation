@@ -20,9 +20,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         for i in 0..<20
         {
             var model = Model()
-            model.name = "吾乃天帝 "
+            model.name = "Celestial Ruler Supreme God "
             model.age = 20 + i
-            model.gender = " 男"
+            model.gender = " male"
             models.append(model)
         }
         return models

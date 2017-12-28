@@ -1,5 +1,5 @@
 //
-//  NSStringExtension.swift
+//  StringExtension.swift
 //  Pods
 //
 //  Created by Spider on 17/9/13.
@@ -167,7 +167,7 @@ extension String
     }
 }
 
-final class numberFormat: NumberFormatter
+public final class numberFormat: NumberFormatter
 {
     static let shared = numberFormat()
     
@@ -178,7 +178,7 @@ final class numberFormat: NumberFormatter
         self.currencyCode = ""
     }
     
-    required init?(coder aDecoder: NSCoder)
+    required public init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }

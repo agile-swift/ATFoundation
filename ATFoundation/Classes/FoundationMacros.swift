@@ -16,4 +16,3 @@ public func synchronized(_ lock:Lock,closure:()->()) {
     closure()
     objc_sync_exit(lock)
 }
-

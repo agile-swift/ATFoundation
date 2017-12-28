@@ -10,7 +10,6 @@
 		301AC67C1F6FAAA700DA9BED /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301AC67B1F6FAAA700DA9BED /* DemoCell.swift */; };
 		301AC67E1F6FB61700DA9BED /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301AC67D1F6FB61700DA9BED /* Model.swift */; };
 		30CE041A1F666E0700915458 /* ATFoundation.podspec.json in Resources */ = {isa = PBXBuildFile; fileRef = 30CE04191F666E0700915458 /* ATFoundation.podspec.json */; };
-		30EB32E41F69310E0003DD49 /* Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EB32E31F69310E0003DD49 /* Bridging.m */; };
 		5599F8AACA8C44EA8E8D1396 /* Pods_ATFoundation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B43ED6A87DF2BC07BB1DAF /* Pods_ATFoundation_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -36,8 +35,6 @@
 		301AC67B1F6FAAA700DA9BED /* DemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
 		301AC67D1F6FB61700DA9BED /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		30CE04191F666E0700915458 /* ATFoundation.podspec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ATFoundation.podspec.json; path = ../ATFoundation.podspec.json; sourceTree = "<group>"; };
-		30EB32E21F69310E0003DD49 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
-		30EB32E31F69310E0003DD49 /* Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridging.m; sourceTree = "<group>"; };
 		4F44810374A7B3B37E727F3F /* Pods-ATFoundation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATFoundation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ATFoundation_Tests/Pods-ATFoundation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		52B43ED6A87DF2BC07BB1DAF /* Pods_ATFoundation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATFoundation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* ATFoundation_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATFoundation_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +113,6 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				301AC67B1F6FAAA700DA9BED /* DemoCell.swift */,
 				301AC67D1F6FB61700DA9BED /* Model.swift */,
-				30EB32E21F69310E0003DD49 /* Bridging.h */,
-				30EB32E31F69310E0003DD49 /* Bridging.m */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -384,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				301AC67E1F6FB61700DA9BED /* Model.swift in Sources */,
-				30EB32E41F69310E0003DD49 /* Bridging.m in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				301AC67C1F6FAAA700DA9BED /* DemoCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
