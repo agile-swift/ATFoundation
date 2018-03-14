@@ -65,20 +65,19 @@ extension String
      e.g. input   12345002
           output  123,450.02 or ¥123,450.02
      */
-    public func formatMoney(_ money:String,hasSymbol:Bool,unit:String,toIntIfNeed:Bool) -> String
+    public func formatMoney(hasSymbol:Bool,unit:String,toIntIfNeed:Bool) -> String
     {
         numberFormat.shared.currencySymbol = (!hasSymbol) ?"":"¥YYY"
-        let moneyNum:NSNumber = NSNumber.init(value:(money as NSString).doubleValue * 0.01)
+        let moneyNum:NSNumber = NSNumber.init(value:(self as NSString).doubleValue * 0.01)
         var moneyStr = numberFormat.shared.string(from: moneyNum)! as String
         
-        if toIntIfNeed
-        {
-            let strArray:[String] = moneyStr.components(separatedBy: ".")
-            if (strArray.last! as NSString) .isEqual(to: "00")
-            {
-                moneyStr = strArray.first!
-            }
+        let strArray:[String] = moneyStr.components(separatedBy: ".")
+        if toIntIfNeed && strArray.count == 2 && strArray.last! == "00" {
+            moneyStr = strArray.first!
+        } else if !toIntIfNeed && strArray.count == 1 {
+            moneyStr = moneyStr + ".00"
         }
+        
         if !unit.isEmpty
         {
             moneyStr += unit

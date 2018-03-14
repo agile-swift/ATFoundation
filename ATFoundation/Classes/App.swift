@@ -59,7 +59,7 @@ final public class App : NSObject
     
     public class var uuid : String
     {
-        return UUID.init().uuidString
+        return UIDevice.current.identifierForVendor?.uuidString ?? ""
     }
     
     public class var deviceName : String
