@@ -132,7 +132,7 @@ extension String
      */
     public func sizeWithFont(font:UIFont) -> CGSize
     {
-        let strs = [NSAttributedStringKey.font:font]
+        let strs = [NSAttributedString.Key.font:font]
         let string:NSString = self as NSString
         return string.size(withAttributes: strs)
     }
@@ -142,7 +142,7 @@ extension String
      */
     public func textSize(text:String,font:UIFont,fontNumber:CGFloat) -> CGSize
     {
-        let attributes = [NSAttributedStringKey.font:font];
+        let attributes = [NSAttributedString.Key.font:font];
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let size = CGSize(width:CGFloat(MAXFLOAT),height:fontNumber)
         let rect:CGRect = text.boundingRect(with: size, options: option, attributes: attributes, context: nil)
